@@ -1,0 +1,47 @@
+package in.mahesh.Service;
+
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import in.mahesh.Dto.ProductsDto;
+
+public class ProductsServiceImp implements ProductsService {
+
+	@Override
+	public ProductsDto addProduct(ProductsDto productsDto, MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductsDto updateProduct(Integer productId, ProductsDto productsDto, MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductsDto> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductsDto getProductById(Integer productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductsDto delProductById(Integer productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateStock(Integer productId, Integer quantity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

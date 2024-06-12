@@ -1,0 +1,39 @@
+package in.mahesh.Service;
+
+import java.util.List;
+
+import in.mahesh.Dto.CategoryDto;
+
+public class CategoryServiceImp implements CategoryService {
+
+	@Override
+	public CategoryDto addCategory(CategoryDto categoryDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CategoryDto updateCategory(Integer categoryId, CategoryDto categoryDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CategoryDto> getAllCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CategoryDto getCategoryById(Integer categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CategoryDto deleteCategoryById(Integer categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

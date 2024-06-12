@@ -1,0 +1,50 @@
+package in.mahesh.Rest;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.mahesh.Dto.CategoryDto;
+import in.mahesh.Response.ApiResponse;
+import in.mahesh.Service.CategoryServiceImp;
+import in.mahesh.properties.AppProperties;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+@RestController
+public class CategoryRestController {
+	
+	@Autowired
+	private CategoryServiceImp service;
+	
+	@Autowired
+	private AppProperties props;
+	
+
+	@PostMapping("/Category")
+	public ResponseEntity<ApiResponse<CategoryDto>> addCategory(@RequestBody CategoryDto categoryDto){
+		
+		Map<String, String> message = props.getMessage();
+		
+		CategoryDto category = service.addCategory(categoryDto);
+		
+		ApiResponse<CategoryDto> resp = new ApiResponse<>();
+		
+		if(category != null) {
+			resp.setStatusCode(201);
+			resp.setMessage("Category Added Sucesfully");
+			resp.setData(category);
+		}else{
+			resp.setStatusCode(500);
+			resp.setMessage("Category  Error ");
+			
+		}
+		
+		return new ResponseEntity<ApiResponse<CategoryDto>>(resp, HttpStatus.CREATED);
+
+		
+	}
+}

@@ -1,0 +1,21 @@
+package in.mahesh.entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class User {
+	
+	private Integer userId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private Long phNo;
+	private String address;
+	private String city;
+	private String state;
+	private String pincode;
+	private String userPic;
+	
+
+}

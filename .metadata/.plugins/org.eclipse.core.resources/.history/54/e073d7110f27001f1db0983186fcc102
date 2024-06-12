@@ -1,0 +1,42 @@
+package in.mahesh.Rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.mahesh.Dto.ProductsDto;
+import in.mahesh.Response.ApiResponse;
+import in.mahesh.Service.ProductsServiceImp;
+import in.mahesh.properties.AppProperties;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+@RestController
+public class ProductRestController {
+	
+	@Autowired
+	private ProductsServiceImp service;
+	
+	@Autowired
+	private AppProperties props;
+	
+	@PostMapping("/product")
+	public ResponseEntity<ApiResponse<ProductsDto>> addProducts(@RequestBody ProductsDto productsDto){
+		ProductsDto product = service.addProduct(productsDto, null);
+		ApiResponse<ProductsDto> resp = new ApiResponse<>();
+		if(product != null) {
+			resp.setStatusCode(201);
+			resp.setMessage("product Added Sucesfully");
+			resp.setData(product);
+		}else{
+			resp.setStatusCode(500);
+			resp.setMessage("product  Error ");
+		}
+		
+		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.CREATED);
+		
+	}
+	
+
+}

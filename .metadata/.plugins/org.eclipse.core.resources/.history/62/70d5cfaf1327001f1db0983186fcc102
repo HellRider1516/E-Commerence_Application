@@ -1,0 +1,42 @@
+
+spring:
+  application:
+    name: Product Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/maheshdb
+    username: root
+    password: MahesH1516@
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+  config:
+    import:
+    - configserver
+    
+server:
+  port: 1111
+  
+  
+  
+  
+
+
+ 
+
+  
+  
+  
+
+
+  
+  
+  
+ 
+
+
+  

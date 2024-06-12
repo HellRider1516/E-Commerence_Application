@@ -1,0 +1,59 @@
+
+spring:
+  application:
+    name: Product Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/project
+    username: root
+    password: MahesH1516@
+    
+     
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+  cloud:
+    config:
+      enabled: false
+    
+    
+
+
+  
+    
+server:
+  port: 3333
+ 
+  
+
+#  
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/ashokitschool/configuration_properties
+#          clone-on-start: true
+  
+
+  
+
+
+
+ 
+
+  
+  
+  
+
+
+  
+  
+  
+ 
+
+
+  

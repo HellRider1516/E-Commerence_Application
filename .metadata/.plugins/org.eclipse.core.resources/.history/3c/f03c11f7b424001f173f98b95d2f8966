@@ -1,0 +1,17 @@
+package in.mahesh.Mapper;
+
+import org.modelmapper.ModelMapper;
+
+import in.mahesh.Dto.CategoryDto;
+import in.mahesh.entity.Category;
+
+public class CategoryMapper {
+	
+	private static final ModelMapper mapper = new ModelMapper();
+	
+	public static CategoryDto convertTodto(Category category) {
+		return mapper.map(category, CategoryDto.class);
+		
+	}
+
+}

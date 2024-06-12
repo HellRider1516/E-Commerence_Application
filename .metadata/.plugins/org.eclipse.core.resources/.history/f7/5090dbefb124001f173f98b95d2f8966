@@ -1,0 +1,17 @@
+package in.mahesh.Dto;
+
+public class ProductsDto {
+	
+	private Integer productId;
+	private String productName;
+	private String description;
+	private Double price;
+	private String image;
+	private Integer stock;
+	private Double discount;
+	private Double beforeDiscount;
+	private Integer categoryId;
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package in.mahesh.Exception;
+
+public class ExceptionResponse {
+
+}
