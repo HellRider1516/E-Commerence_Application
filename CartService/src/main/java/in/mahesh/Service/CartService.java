@@ -6,11 +6,11 @@ public interface CartService {
 	
 	public CartDto addCart(CartDto cartDto);
 	
-	public CartDto updateCartQuantityById(CartDto cartDto);
+	public CartDto updateCartQuantityById(Integer cartId);
 	
 	public CartDto getCartByUserId(Integer userId);
 
-	public void deleteCartById(Integer cartId);
+	public CartDto deleteCartById(Integer cartId);
 	
 	
 
