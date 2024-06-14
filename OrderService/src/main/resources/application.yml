@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: OrderService
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+Order:
+  message:
+    orderSaveSucc: orders saved sucessfully
+    orderSaveErr: orders saved Error
+    orderUpdateSucc: orders Updated sucessfully
+    orderUpdateErr: orders Updated Error
+    orderRetSucc: orders Retired sucessfully
+    orderRetErr: orders Retired Err
+    orderRetByUserIdSucc: order Retired by using user Id sucessfully
+    orderRetByUserIdErr: order Retired by using user Id Err
+    orderByStatusAndTimeSucc: order Retired by using Status And Data sucessfully
+    orderByStatusAndTimeErr: order Retired by using Status And Data Error
+    

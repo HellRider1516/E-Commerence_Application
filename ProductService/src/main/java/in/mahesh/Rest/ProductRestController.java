@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import in.mahesh.Constants.AppConstants;
 import in.mahesh.Dto.ProductsDto;
 import in.mahesh.Response.ApiResponse;
 import in.mahesh.Service.ProductsServiceImp;
@@ -32,10 +33,6 @@ public class ProductRestController {
 	private AppProperties props;
 	
 	
-	
-	
-	
-	
 	@PostMapping("/product")
 	public ResponseEntity<ApiResponse<ProductsDto>> addProducts(@RequestBody ProductsDto productsDto ,  @RequestParam("file") MultipartFile file){
 		ProductsDto product = service.addProduct(productsDto, file);
@@ -43,11 +40,11 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(product != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productAdded"));
+			resp.setMessage(message.get(AppConstants.PRO_Add_SUCC));
 			resp.setData(product);
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productAddErr"));
+			resp.setMessage(message.get(AppConstants.PRO_Add_ERR));
 		}
 		
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.CREATED);
@@ -61,11 +58,11 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(updateProduct != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productUpdate"));
+			resp.setMessage(message.get(AppConstants.PRO_UPDATE_SUCC));
 			resp.setData(updateProduct);
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productUpdateErr"));
+			resp.setMessage(message.get(AppConstants.PRO_UPDATE_ERR));
 		}
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.CREATED);
 	}
@@ -78,10 +75,10 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(allProducts != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productFetch"));
+			resp.setMessage(message.get(AppConstants.PRO_RET_SUCC));
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productFetchErr"));
+			resp.setMessage(message.get(AppConstants.PRO_RET_ERR));
 		}
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.OK);
 	}
@@ -94,11 +91,11 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(productById != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productSelect"));
+			resp.setMessage(message.get(AppConstants.PRO_RET_PROID_SUCC));
 			resp.setData(productById);
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productSelectErr"));
+			resp.setMessage(message.get(AppConstants.PRO_RET_PROID_ERR));
 		}
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.OK);
 	}
@@ -110,11 +107,11 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(delProductById != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productDelete"));
+			resp.setMessage(message.get(AppConstants.PRO_DEL_SUCC));
 			resp.setData(delProductById);
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productDeleteErr"));
+			resp.setMessage(message.get(AppConstants.PRO_DEL_ERR));
 		}
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.OK);
 	}
@@ -127,10 +124,10 @@ public class ProductRestController {
 		Map<String, String> message = props.getMessage();
 		if(updateStock) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("productStock"));
+			resp.setMessage(message.get(AppConstants.PRO_STOCK_SUCC));
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("productStockErr"));
+			resp.setMessage(message.get(AppConstants.PRO_STOCK_ERR));
 		}
 		return new ResponseEntity<ApiResponse<ProductsDto>>(resp, HttpStatus.OK);
 	}

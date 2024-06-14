@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import in.mahesh.Constants.AppConstants;
 import in.mahesh.Dto.CategoryDto;
 import in.mahesh.Response.ApiResponse;
 import in.mahesh.Service.CategoryServiceImp;
@@ -41,11 +42,11 @@ public class CategoryRestController {
 		
 		if(category != null) {
 			resp.setStatusCode(201);
-			resp.setMessage(message.get("categoryAdded"));
+			resp.setMessage(message.get(AppConstants.CAT_Add_SUCC));
 			resp.setData(category);
 		}else{
 			resp.setStatusCode(500);
-			resp.setMessage(message.get("categoryAddErr"));
+			resp.setMessage(message.get(AppConstants.CAT_Add_ERR));
 		}
 		return new ResponseEntity<ApiResponse<CategoryDto>>(resp, HttpStatus.CREATED);
 
@@ -62,10 +63,10 @@ public class CategoryRestController {
 		
 		if(updateCategory != null) {
 			resp.setData(updateCategory);
-			resp.setMessage(message.get("categoryUpdate"));
+			resp.setMessage(message.get(AppConstants.CAT_UPDATE_SUCC));
 			resp.setStatusCode(201);
 		}else {
-			resp.setMessage(message.get("categoryUpdateErr"));
+			resp.setMessage(message.get(AppConstants.CAT_UPDATE_ERR));
 			resp.setStatusCode(500);
 		}
 		return new ResponseEntity<ApiResponse<CategoryDto>>(resp, HttpStatus.CREATED);
@@ -80,10 +81,10 @@ public class CategoryRestController {
 		
 		if(allCategories != null) {
 			resp.setData(allCategories);
-			resp.setMessage(message.get("categoryFetch"));
+			resp.setMessage(message.get(AppConstants.CAT_RET_SUCC));
 			resp.setStatusCode(201);
 		}else {
-			resp.setMessage(message.get("categoryFetchErr"));
+			resp.setMessage(message.get(AppConstants.CAT_RET_ERR));
 			resp.setStatusCode(500);
 		}
 		return new ResponseEntity<ApiResponse<List<CategoryDto>>>(resp, HttpStatus.OK);
@@ -98,10 +99,10 @@ public class CategoryRestController {
 		
 		if(categoryById != null) {
 			resp.setData(categoryById);
-			resp.setMessage(message.get("categorySelect"));
+			resp.setMessage(message.get(AppConstants.CAT_CATEGOTYID_SUCC));
 			resp.setStatusCode(201);
 		}else {
-			resp.setMessage(message.get("categorySelectErr"));
+			resp.setMessage(message.get(AppConstants.CAT_CATEGOTYID_ERR));
 			resp.setStatusCode(500);
 		}
 		return new ResponseEntity<ApiResponse<CategoryDto>>(resp, HttpStatus.OK);
@@ -117,10 +118,10 @@ public class CategoryRestController {
 		
 		if(deleteCategoryById != null) {
 			resp.setData(deleteCategoryById);
-			resp.setMessage(message.get("categoryDelete"));
+			resp.setMessage(message.get(AppConstants.CAT_DEL_SUCC));
 			resp.setStatusCode(201);
 		}else {
-			resp.setMessage(message.get("categoryDeleteErr"));
+			resp.setMessage(message.get(AppConstants.CAT_DEL_ERR));
 			resp.setStatusCode(500);
 		}
 		return new ResponseEntity<ApiResponse<CategoryDto>>(resp, HttpStatus.OK);

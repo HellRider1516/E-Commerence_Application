@@ -23,9 +23,8 @@ public class ProductsServiceImp implements ProductsService {
 
 	@Override
 	public ProductsDto addProduct(ProductsDto productsDto, MultipartFile file) {
-
-		Products p = new Products();
-		Products savedProduct = pRepo.save(p);
+		Products convertToEntity = ProductsMapper.convertToEntity(productsDto);
+		Products savedProduct = pRepo.save(convertToEntity);
 		if(savedProduct.getProductId()!=null) {
 			return ProductsMapper.convertToDto(savedProduct);
 		}
