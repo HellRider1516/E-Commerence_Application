@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "auth-service")
+@ConfigurationProperties(prefix = "authservice")
 @Configuration
 public class AppProperties {
 	

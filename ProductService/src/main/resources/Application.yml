@@ -7,6 +7,12 @@ spring:
     username: root
     password: MahesH1516@
     
+  config:
+    import: optional:configserver:http://localhost:2222/
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/applications
      
     
   jpa:

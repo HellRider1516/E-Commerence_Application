@@ -1,12 +1,14 @@
 package in.mahesh.Utils;
 
-import java.io.FileOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+import in.mahesh.Dto.OrderDto;
 import in.mahesh.Repo.OrderRepo;
 import in.mahesh.entity.Order;
 
@@ -15,7 +17,7 @@ public class ExcelGenerator {
 	private OrderRepo repo;
 	
 	
-	public void generatExcel() throws Exception {
+	public ByteArrayInputStream generatExcel(List<OrderDto> orders) throws Exception {
 		List<Order> allOrders = repo.findAll();
 		HSSFWorkbook workBook =new HSSFWorkbook();
 		HSSFSheet sheet = workBook.createSheet("BOOKS_DETAILS");
@@ -40,10 +42,11 @@ public class ExcelGenerator {
 			rowIndex++;
 		}
 		
-		FileOutputStream fs=new FileOutputStream("mahesh.xls");
-		workBook.write(fs);
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		workBook.write(out);
 		workBook.close();
-		fs.close();
+		out.close();
+		return new ByteArrayInputStream(out.toByteArray());
 		
 		
 	}

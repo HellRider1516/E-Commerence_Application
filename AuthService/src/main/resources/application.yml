@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: Auth-Service        
+  config:
+    import: optional:configserver:http://localhost:2222/
+    
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/applications
+  datasource:
+    username: root
+    password: MahesH1516@
+    url: jdbc:mysql://localhost:3306/project
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+ port: 4444
+ 
+
+     
+authservice:
+  message:
+   userReg: User Created
+   userRegErr: User Creation Failed
+   login: Login Success
+   loginErr: Invalid Credentials
+    
+
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

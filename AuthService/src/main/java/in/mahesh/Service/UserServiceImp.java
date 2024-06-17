@@ -1,44 +1,78 @@
 package in.mahesh.Service;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import in.mahesh.Repo.UserRepo;
+import in.mahesh.Utils.FileUtils;
 import in.mahesh.entity.User;
 @Service
 public class UserServiceImp implements UserService {
 	
+	@Autowired
 	private UserRepo uRepo;
+	
+	@Autowired(required = true)
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired(required = true)
+	private AuthenticationManager authManager;
 
 	@Override
-	public User addUser(User user, MultipartFile file) {
-		// TODO Auto-generated method stub
-		return null;
+	public User addUser(User user, MultipartFile file) throws IOException {
+		User u = uRepo.findByEmail(user.getEmail());
+		if(u == null) {
+			String fileName = FileUtils.saveFiles(file.getName(), file);
+			String encodedPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(encodedPassword);
+			user.setUserPic(fileName);
+			return uRepo.save(user);
+			
+		}
+		return u;
 	}
 
 	@Override
 	public User userLogin(User user) {
-		// TODO Auto-generated method stub
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+		Authentication authenticate = null ;
+		try {
+			 Authentication authenticate2 = authManager.authenticate(token);
+			if(authenticate2.isAuthenticated()) {
+				return uRepo.findByEmail(user.getEmail());
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public List<User> getAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		return uRepo.findAll();
 	}
 
 	@Override
 	public User getUserById(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return uRepo.findById(userId).orElseThrow();
+		
 	}
 
 	@Override
 	public User delUserById(Integer userId) {
-		// TODO Auto-generated method stub
+		User user = uRepo.findById(userId).orElseThrow();
+		if(user != null) {
+			uRepo.deleteById(userId);
+			return user;
+		}
 		return null;
 	}
 

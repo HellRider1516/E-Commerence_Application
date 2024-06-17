@@ -1,5 +1,7 @@
 package in.mahesh.Dto;
 
+import java.time.LocalDate;
+
 import in.mahesh.entity.OrderStatus;
 
 public class OrderDto {
@@ -11,8 +13,17 @@ public class OrderDto {
 	private Long price;
 	private String paymentType;
 	private OrderStatus status;
+	private LocalDate orderDate;
 	
 	
+	
+	
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
+	}
 	public OrderStatus getStatus() {
 		return status;
 	}
