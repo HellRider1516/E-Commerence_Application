@@ -1,6 +1,0 @@
-package in.mahesh.Constants;
-
-public class AppConstants {
-	private static final String productAdded = "productAdded";
-
-}

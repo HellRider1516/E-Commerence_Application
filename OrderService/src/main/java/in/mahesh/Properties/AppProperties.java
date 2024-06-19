@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableConfigurationProperties
 @Configuration
-@ConfigurationProperties(prefix = "Order")
+@ConfigurationProperties(prefix = "order")
 public class AppProperties {
 	
 	private Map<String, String> message = new HashMap<>();

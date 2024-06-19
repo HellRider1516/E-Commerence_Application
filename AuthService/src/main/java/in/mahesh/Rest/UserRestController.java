@@ -25,12 +25,22 @@ import in.mahesh.properties.AppProperties;
 @RestController
 public class UserRestController {
 	
-	@Autowired
+	
 	private UserServiceImp service;
 	
 	@Autowired
 	private AppProperties props;
 	
+	
+	@Autowired
+	public UserRestController(UserServiceImp service) {
+		super();
+		this.service = service;
+	}
+
+
+
+
 	private static final Logger log = LoggerFactory.getLogger(UserRestController.class);
 	
 	

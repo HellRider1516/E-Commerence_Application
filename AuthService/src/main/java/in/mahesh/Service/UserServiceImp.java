@@ -17,14 +17,27 @@ import in.mahesh.entity.User;
 @Service
 public class UserServiceImp implements UserService {
 	
+	
+	
+	
+	public UserServiceImp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
 	private UserRepo uRepo;
 	
-	@Autowired(required = true)
-	private PasswordEncoder passwordEncoder;
-	
-	@Autowired(required = true)
+	private PasswordEncoder passwordEncoder;	
+
 	private AuthenticationManager authManager;
+	
+	@Autowired
+	public UserServiceImp(PasswordEncoder passwordEncoder, AuthenticationManager authManager) {
+		super();
+		this.passwordEncoder = passwordEncoder;
+		this.authManager = authManager;
+	}
 
 	@Override
 	public User addUser(User user, MultipartFile file) throws IOException {

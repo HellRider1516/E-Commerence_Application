@@ -1,8 +1,17 @@
-eureka:
-  client:
-    register-with-eureka: false
-server:
-  port: 8761
+
 spring:
   application:
     name: DiscoveryService
+    
+    
+server:
+  port: 8761
+
+eureka:
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 60000
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+

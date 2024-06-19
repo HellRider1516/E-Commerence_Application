@@ -1,22 +1,61 @@
 spring:
   application:
-    name: OrderService
-
+    name: Order Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/project
+    username: root
+    password: MahesH1516@
+    
+  
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/applications
+     
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+  cloud:
+    config:
+      enabled: false
     
     
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registryFetchIntervalSeconds: 5
+    instanceInfoReplicationIntervalSeconds: 5
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    eurekaServiceUrlPollIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+
+      
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+        
+        
+server:
+  port: 5555
 
 
 
 
 
 
-
-
-
-
-
-Order:
+order:
   message:
     orderSaveSucc: orders saved sucessfully
     orderSaveErr: orders saved Error

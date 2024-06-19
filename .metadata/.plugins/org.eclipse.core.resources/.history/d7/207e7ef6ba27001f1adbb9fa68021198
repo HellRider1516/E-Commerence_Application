@@ -1,9 +1,0 @@
-package in.mahesh.Dto;
-
-public class CartDto {
-	
-	private Integer productId;
-	private Integer userId;
-	private Integer quantity;
-
-}

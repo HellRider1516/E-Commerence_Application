@@ -7,8 +7,7 @@ spring:
     username: root
     password: MahesH1516@
     
-  config:
-    import: optional:configserver:http://localhost:2222/
+  
   boot:
     admin:
       client:
@@ -30,8 +29,16 @@ spring:
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registryFetchIntervalSeconds: 5
+    instanceInfoReplicationIntervalSeconds: 5
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    eurekaServiceUrlPollIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+
       
 
 management:
@@ -43,15 +50,6 @@ management:
 server:
   port: 3333
  
-  
-
-#  
-#  cloud:
-#    config:
-#      server:
-#        git:
-#          uri: https://github.com/ashokitschool/configuration_properties
-#          clone-on-start: true
   
 
   
